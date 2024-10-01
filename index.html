@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre Lugares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4; /* Fondo claro para un estilo más informativo */
+            color: #333; /* Texto en gris oscuro para mejor legibilidad */
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3; /* Azul oscuro para el encabezado principal */
+        }
+        h2 {
+            color: #0056b3; /* Azul oscuro para los subtítulos */
+            margin-bottom: 10px;
+        }
+        .contenedor {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ffffff; /* Fondo blanco para los contenedores */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd; /* Borde gris claro */
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Fondo claro para el select */
+        }
+        #info {
+            display: none;
+            background-color: #e9f7ef; /* Fondo verde claro para el área de información */
+            border: 1px solid #3fbf8e; /* Borde verde */
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .noticia {
+            font-weight: bold; /* Resaltar los titulares */
+            margin-bottom: 5px;
+        }
+        @media (max-width: 600px) {
+            h1, h2 {
+                font-size: 1.5em; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+            }
+            select {
+                padding: 8px; /* Menos padding en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Información sobre Lugares</h1>
+    <div class="contenedor">
+        <h2>Lugares con Alto Impacto</h2>
+        <select id="altoImpacto" onchange="mostrarInformacion('altoImpacto')">
+            <option value="">Selecciona un lugar...</option>
+            <option value="Tlalpan">Tlalpan (CDMX)</option>
+            <option value="Tlalnepantla">Tlalnepantla (Estado de México)</option>
+            <option value="Naucalpan">Naucalpan (Estado de México)</option>
+            <option value="Coyoacán">Coyoacán (CDMX)</option>
+            <option value="Gustavo A. Madero">Gustavo A. Madero (CDMX)</option>
+            <option value="Cuauhtémoc">Cuauhtémoc (CDMX)</option>
+            <option value="Miguel Hidalgo">Miguel Hidalgo (CDMX)</option>
+            <option value="Benito Juárez">Benito Juárez (CDMX)</option>
+            <option value="Huixquilucan">Huixquilucan (Estado de México)</option>
+        </select>
+    </div>
+    <div class="contenedor">
+        <h2>Lugares con Menos Efectividad</h2>
+        <select id="menosEfectivo" onchange="mostrarInformacion('menosEfectivo')">
+            <option value="">Selecciona un lugar...</option>
+            <option value="Naucalpan">Naucalpan (Estado de México)</option>
+            <option value="Ecatepec">Ecatepec (Estado de México)</option>
+            <option value="Tecámac">Tecámac (Estado de México)</option>
+            <option value="Huehuetoca">Huehuetoca (Estado de México)</option>
+            <option value="Zumpango">Zumpango (Estado de México)</option>
+            <option value="Coacalco">Coacalco (Estado de México)</option>
+            <option value="Nezahualcóyotl">Nezahualcóyotl (Estado de México)</option>
+            <option value="Chalco">Chalco (Estado de México)</option>
+            <option value="San Felipe del Progreso">San Felipe del Progreso (Estado de México)</option>
+            <option value="Ocoyoacac">Ocoyoacac (Estado de México)</option>
+        </select>
+    </div>
+    <div id="info"></div>
+
+    <script>
+        function mostrarInformacion(tipo) {
+            const infoDiv = document.getElementById('info');
+            const seleccion = document.getElementById(tipo).value;
+            let contenido = '';
+
+            switch (seleccion) {
+                case 'Tlalpan':
+                    contenido = `<div class="noticia">Últimas Noticias: Tlalpan (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Tlalpan tiene un nivel socioeconómico diverso y una población que busca mejorar sus habilidades. Las áreas con mejor desarrollo tienden a buscar la educación continua y el aprendizaje de idiomas.</p>
+                    <p><strong>Tecnología:</strong> Se pueden encontrar centros de educación con acceso a internet.</p>`;
+                    break;
+                case 'Tlalnepantla':
+                    contenido = `<div class="noticia">Últimas Noticias: Tlalnepantla (Estado de México)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Similar a Tlalpan, Tlalnepantla tiene una población que se interesa en la educación y la mejora personal. Además, es un área con un importante desarrollo comercial.</p>
+                    <p><strong>Tecnología:</strong> Las familias suelen tener acceso a internet en casa o en centros comunitarios.</p>`;
+                    break;
+                case 'Naucalpan':
+                    contenido = `<div class="noticia">Últimas Noticias: Naucalpan (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Aunque Naucalpan tiene una población considerable, la competencia educativa es alta. Muchas instituciones ya ofrecen clases de inglés, lo que podría hacer que el módulo gratuito no tenga tanto impacto.</p>
+                    <p><strong>Tecnología:</strong> A pesar de que hay acceso a tecnología, la saturación de opciones podría hacer que los usuarios prefieran alternativas ya establecidas.</p>`;
+                    break;
+                case 'Coyoacán':
+                    contenido = `<div class="noticia">Últimas Noticias: Coyoacán (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Coyoacán es un área culturalmente rica y con un fuerte deseo de aprendizaje. La población está interesada en la educación continua, especialmente en idiomas.</p>
+                    <p><strong>Tecnología:</strong> Acceso a internet en muchas áreas, facilitando la educación en línea.</p>`;
+                    break;
+                case 'Gustavo A. Madero':
+                    contenido = `<div class="noticia">Últimas Noticias: Gustavo A. Madero (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Esta demarcación cuenta con una población diversa que busca oportunidades de desarrollo personal y profesional, siendo el aprendizaje de idiomas un aspecto clave.</p>
+                    <p><strong>Tecnología:</strong> Muchos centros educativos están disponibles para acceso a internet.</p>`;
+                    break;
+                case 'Cuauhtémoc':
+                    contenido = `<div class="noticia">Últimas Noticias: Cuauhtémoc (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Al ser una zona con gran actividad comercial y cultural, la población busca mejorar sus habilidades lingüísticas para fines profesionales.</p>
+                    <p><strong>Tecnología:</strong> Alto acceso a internet y recursos educativos.</p>`;
+                    break;
+                case 'Miguel Hidalgo':
+                    contenido = `<div class="noticia">Últimas Noticias: Miguel Hidalgo (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Con una población que trabaja en diversas industrias, el aprendizaje de inglés es fundamental para su desarrollo profesional.</p>
+                    <p><strong>Tecnología:</strong> Buen acceso a tecnología y plataformas de aprendizaje.</p>`;
+                    break;
+                case 'Benito Juárez':
+                    contenido = `<div class="noticia">Últimas Noticias: Benito Juárez (CDMX)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Esta área cuenta con una población interesada en la educación continua, con muchas instituciones educativas que ofrecen clases de inglés.</p>
+                    <p><strong>Tecnología:</strong> Acceso a internet y centros de aprendizaje.</p>`;
+                    break;
+                case 'Huixquilucan':
+                    contenido = `<div class="noticia">Últimas Noticias: Huixquilucan (Estado de México)</div>
+                    <p><strong>Razones de Alto Impacto:</strong> Huixquilucan tiene un nivel socioeconómico alto que impulsa la educación y el aprendizaje de idiomas.</p>
+                    <p><strong>Tecnología:</strong> Alta disponibilidad de internet en la mayoría de los hogares.</p>`;
+                    break;
+                case 'Ecatepec':
+                    contenido = `<div class="noticia">Últimas Noticias: Ecatepec (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Aunque hay interés en el aprendizaje de idiomas, la alta competencia y las limitaciones de acceso a tecnología pueden afectar la efectividad del módulo.</p>
+                    <p><strong>Tecnología:</strong> Las limitaciones en algunas áreas pueden dificultar el acceso a internet.</p>`;
+                    break;
+                case 'Tecámac':
+                    contenido = `<div class="noticia">Últimas Noticias: Tecámac (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> A pesar de la intención de aprender, la falta de acceso a recursos puede limitar el interés en el módulo.</p>
+                    <p><strong>Tecnología:</strong> Acceso limitado a internet en algunas zonas.</p>`;
+                    break;
+                case 'Huehuetoca':
+                    contenido = `<div class="noticia">Últimas Noticias: Huehuetoca (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> La baja disponibilidad de opciones educativas y la falta de acceso a tecnología puede disminuir el interés.</p>
+                    <p><strong>Tecnología:</strong> Limitaciones en el acceso a internet.</p>`;
+                    break;
+                case 'Zumpango':
+                    contenido = `<div class="noticia">Últimas Noticias: Zumpango (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> La falta de interés en el aprendizaje de idiomas y los recursos limitados pueden hacer que este módulo no tenga tanto impacto.</p>
+                    <p><strong>Tecnología:</strong> Limitaciones en el acceso a internet.</p>`;
+                    break;
+                case 'Coacalco':
+                    contenido = `<div class="noticia">Últimas Noticias: Coacalco (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Alta competencia en la educación de idiomas y limitaciones en el acceso a recursos pueden afectar el éxito del módulo.</p>
+                    <p><strong>Tecnología:</strong> Acceso limitado a internet en algunas áreas.</p>`;
+                    break;
+                case 'Nezahualcóyotl':
+                    contenido = `<div class="noticia">Últimas Noticias: Nezahualcóyotl (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> La saturación del mercado educativo en la región puede reducir el interés por el módulo gratuito.</p>
+                    <p><strong>Tecnología:</strong> Limitaciones en el acceso a internet en algunas áreas.</p>`;
+                    break;
+                case 'Chalco':
+                    contenido = `<div class="noticia">Últimas Noticias: Chalco (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Falta de interés y recursos limitados pueden afectar el éxito del módulo.</p>
+                    <p><strong>Tecnología:</strong> Acceso limitado a internet en algunas áreas.</p>`;
+                    break;
+                case 'San Felipe del Progreso':
+                    contenido = `<div class="noticia">Últimas Noticias: San Felipe del Progreso (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Las limitaciones educativas y de acceso a tecnología pueden hacer que el módulo no tenga tanto impacto.</p>
+                    <p><strong>Tecnología:</strong> Limitaciones en el acceso a internet.</p>`;
+                    break;
+                case 'Ocoyoacac':
+                    contenido = `<div class="noticia">Últimas Noticias: Ocoyoacac (Estado de México)</div>
+                    <p><strong>Razones de Baja Efectividad:</strong> Falta de interés en la educación de idiomas y limitaciones de acceso a recursos.</p>
+                    <p><strong>Tecnología:</strong> Limitaciones en el acceso a internet en algunas áreas.</p>`;
+                    break;
+                default:
+                    contenido = '<p>Por favor, selecciona un lugar para ver más información.</p>';
+            }
+
+            infoDiv.innerHTML = contenido;
+            infoDiv.style.display = 'block'; // Mostrar el div de información
+        }
+    </script>
+</body>
+</html>
